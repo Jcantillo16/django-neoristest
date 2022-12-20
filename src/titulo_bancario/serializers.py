@@ -12,6 +12,11 @@ class TituloBancarioSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("El idtitulo no es valido")
         return data
 
+    def to_internal_value(self, data):
+        data['idtitulo'] = data['idtitulo'].upper()
+        return super().to_internal_value(data)
+
+
     def validate_idtitulo(self, value):
         if TituloBancario.objects.filter(idtitulo=value).exists():
             raise serializers.ValidationError("El idtitulo ya existe")

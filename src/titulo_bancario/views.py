@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import TituloBancario
 from .serializers import TituloBancarioSerializer
+from django.http import Http404
 
 
 class TituloLista(APIView):
