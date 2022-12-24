@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import TituloBancario
+from .constanst import ID_TITULOS
 
 
 class TituloBancarioSerializer(serializers.ModelSerializer):
@@ -8,7 +9,7 @@ class TituloBancarioSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate(self, data):
-        if data['idtitulo'] not in ['USD', 'TRPV', 'TP', 'TID', 'THI', 'TESU', 'TEST', 'TESP', 'TESOROS', 'TESI']:
+        if data['idtitulo'] not in ID_TITULOS:
             raise serializers.ValidationError("El idtitulo no es valido")
         return data
 
